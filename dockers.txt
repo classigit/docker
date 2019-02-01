@@ -1,0 +1,43 @@
+Dockers:
+docker version - check client/server version and make sure server is running
+
+old way: docker <command>(options) 
+new way: docker <command><sub-command>(options)
+
+
+docker container run --detach --publish 80:80 --name dimas_nginx nginx
+docker container ls (the new way for "docker ps" - show running containers)
+docker container ls -a (shows all container )
+docker container logs <name> - shows what would have written on screen in case we didn't run in the background
+docker container top <name> - show inner top
+docker container rm <name> - remove container
+
+docker image ls - list images
+docker container stats - live performance stats for all containers
+docker container inspect - details of one container config
+docker container run -it (start container in interactive mode)
+docker container exec -it <program_name> (run additional commands in existing container , usually we run bash in program_name)
+
+dockert tag <old name> <new name> - create a new name for an existing image (if you want to push it you should add your username/ before the name)
+
+docker volume ls - gives the ids of all the volumes
+docker volume inspect <id> - actually see the actual location of the volume on the host (mountpoint)
+note that stopping or removing containers doesn't remove the volume
+when creating a container you can pass '-v name:/some/path' to give a friendly name to the volume (to see it nice with docker volume ls command), note that it works only if docker was created with a VOLUME in the Dockerfile
+
+-v /some.path:/some/path -creates a bind mount (no need VOLUME for this)
+
+Dockerfile:
+Prefer WORKDIR over 'RUN cd /some/path/'
+
+
+
+Networking:
+
+docker container port <name> - show port forwrding for container
+
+docket network ls - list all availible netwoeks
+docker network create <name> - spawn a new virtual network to attach containers to
+docker container run ... --network <network_name> - start container attached to newtork_name
+docker network connect/disconnect.. - use to connect or disconnect networks to a running docker
+ 
