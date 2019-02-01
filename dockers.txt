@@ -5,7 +5,7 @@ old way: docker <command>(options)
 new way: docker <command><sub-command>(options)
 
 
-docker container run --detach --publish 80:80 --name dimas_nginx nginx
+docker container run --detach --publish 80:80 --name nginx nginx
 docker container ls (the new way for "docker ps" - show running containers)
 docker container ls -a (shows all container )
 docker container logs <name> - shows what would have written on screen in case we didn't run in the background
